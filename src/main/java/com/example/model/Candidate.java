@@ -1,5 +1,7 @@
 package com.example.model;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 /**
@@ -7,15 +9,17 @@ import javax.persistence.*;
  */
 @Table
 @Entity(name = "candidate")
-public class Candidate {
+public class Candidate implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column
+    @Column(name = "firstname")
     private String firstName;
-    @Column
+    @Column(name = "lastname")
     private String lastName;
+    @Column(name = "email")
+    private String email;
 
     public Integer getId() {
         return id;
@@ -39,5 +43,13 @@ public class Candidate {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
